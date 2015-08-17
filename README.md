@@ -20,7 +20,7 @@ class {'::carbon':
   carbon_host  => '127.0.0.1',
   carbon_group => '_graphite',
   carbon_user  => '_graphite',
-  instrances   => {
+  instances    => {
     'a': {
       ensure => present,
       cache_query_interface => '127.0.0.2',
