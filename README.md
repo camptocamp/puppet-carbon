@@ -25,6 +25,9 @@ class {'::carbon':
 }
 ```
 
+It allows to create a multi-instance carbon-cache, launching as many carbon-cache processes as you'd need.
+Please take note the instance name must be "one letter". Hence, maximum seems to be 26.
+
 ## Definitions
 
 * carbon::instance

@@ -2,7 +2,7 @@
 [default]
 default = true
 destinations = <%=
-  scope.lookupvar('carbon::instances').sort.map do |instance|
+  scope.lookupvar('carbon::instances').keys.sort.map do |instance|
     raise(Puppet::ParseError, "#{instance} isn't 1, but is #{instance.length}") unless instance.length == 1
     "#{scope.lookupvar('carbon::host')}:2#{instance.ord-87}4:#{instance}"
   end.join(', ')

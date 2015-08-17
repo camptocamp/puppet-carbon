@@ -15,7 +15,11 @@ describe "carbon" do
             :host        => '127.0.0.1',
             :group       => '_graphite',
             :user        => '_graphite',
-            :instances   => ['a','b','c'],
+            :instances   => {
+              'a' => {},
+              'b' => {},
+              'c' => {},
+            },
             :storage_dir => '/srv/carbon',
           }
         end

@@ -14,7 +14,7 @@ describe "carbon::instance" do
           "
           Exec { path => '/sbin:/bin:/usr/bin:/usr/sbin', }
           class {'::carbon':
-            instances => [],
+            instances => {},
           }
           "
         end

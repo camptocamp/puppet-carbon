@@ -3,7 +3,7 @@ class carbon::config {
   $base_dir = $carbon::config_dir
 
   $destinations = inline_template('<%=
-scope.lookupvar("carbon::instances").sort.map do |instance|
+scope.lookupvar("carbon::instances").keys.sort.map do |instance|
 raise(Puppet::ParseError, "#{instance} is not 1, but is #{instance.length}") unless instance.length == 1
 "#{scope.lookupvar("carbon::host")}:2#{instance.ord-87}4:#{instance}"
 end.join(", ")
