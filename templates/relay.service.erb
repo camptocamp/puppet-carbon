@@ -1,0 +1,25 @@
+## Managed by puppet
+[Unit]
+Description=Carbon Relay service
+Documentation=https://graphite.readthedocs.org/en/latest/carbon-daemons.html
+
+[Service]
+Type=simple
+LimitNOFILE=65535
+TimeoutStopSec=20
+ExecStart=/usr/bin/carbon-relay \
+        --config=/etc/carbon/carbon.conf \
+        --debug \
+        --pidfile=/var/run/carbon/carbon-relay.pid \
+        --logdir=/var/log/carbon/ start
+ExecStop=/usr/bin/carbon-relay \
+        --config=/etc/carbon/carbon.conf \
+        --debug \
+        --pidfile=/var/run/carbon/carbon-relay.pid \
+        --logdir=/var/log/carbon/ start
+KillMode=mixed
+User=<%=@carbon_user%>
+Group=<%=@carbon_group%>
+
+[Install]
+WantedBy=multi-user.target

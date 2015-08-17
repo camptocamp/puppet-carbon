@@ -1,0 +1,12 @@
+# Managed by puppet
+[default]
+default = true
+<%-
+  instance_list = Array.new
+  @instances.sort.each do |instance|
+    raise(Puppet::ParseError, "#{instance} isn't 1, but is #{instance.length}") unless instance.length == 1
+    port = instance.ord-87
+    instance_list.push "#{carbon_host}:2#{port}4:#{instance}"
+  end
+-%>
+destinations = <%=instance_list.join(', ')%>
