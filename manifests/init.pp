@@ -12,7 +12,7 @@ class carbon(
   validate_hash($instances)
   validate_absolute_path($storage_dir)
 
-  contain ::systemd
+  include ::systemd
 
   class {'::carbon::install': }->
   class {'::carbon::config': }->
