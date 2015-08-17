@@ -4,3 +4,4 @@ spec/fixtures/
 .vagrant/
 .bundle/
 coverage/
+.*.swp
