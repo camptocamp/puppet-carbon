@@ -15,7 +15,7 @@ class carbon(
   contain ::systemd
 
   class {'::carbon::install': }->
-  class {'::carbon::config': }->
+  class {'::carbon::config': }~>
   class {'::carbon::service': }
 
   create_resources('carbon::instance', $instances)
