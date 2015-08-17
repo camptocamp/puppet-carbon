@@ -15,7 +15,7 @@ define carbon::instance(
   $whitelists_dir               = '/var/lib/carbon/lists'
 ) {
 
-  contain ::systemd
+  include ::systemd
 
   $f_ensure = $ensure? {
     'present' => 'file',
@@ -25,6 +25,11 @@ define carbon::instance(
   $s_ensure = $ensure? {
     'present' => 'running',
     default   => 'stopped',
+  }
+
+  $s_enable = $ensure? {
+    'present' => true,
+    default   => false,
   }
 
   Ini_setting {
@@ -90,6 +95,7 @@ define carbon::instance(
   }
   service {"carbon-cache-${name}":
     ensure     => $s_ensure,
+    enable     => $s_enable,
     hasstatus  => true,
     hasrestart => false,
     provider   => 'systemd',
