@@ -12,11 +12,11 @@ describe "carbon" do
       context "Valid configuration" do
         let :params do
           {
-            :carbon_host  => '127.0.0.1',
-            :carbon_group => '_graphite',
-            :carbon_user  => '_graphite',
-            :instances    => ['a','b','c'],
-            :storage_dir  => '/srv/carbon',
+            :host        => '127.0.0.1',
+            :group       => '_graphite',
+            :user        => '_graphite',
+            :instances   => ['a','b','c'],
+            :storage_dir => '/srv/carbon',
           }
         end
 
@@ -25,26 +25,21 @@ describe "carbon" do
         }
 
         it {
-          is_expected.to contain_concat('/etc/carbon/carbon.conf')
+          is_expected.to contain_package('graphite-carbon')
         }
+
         it {
-          is_expected.to contain_concat__fragment('globals')
-          .with_target('/etc/carbon/carbon.conf')
-          .with_content(/DESTINATIONS = 127.0.0.1:2104:a, 127.0.0.1:2114:b, 127.0.0.1:2124:c/)
+          is_expected.to contain_package('python-rrdtool')
         }
+
         it {
-          is_expected.to contain_file('/etc/carbon/relay-rules.conf')
-          .with_content(/destinations = 127.0.0.1:2104:a, 127.0.0.1:2114:b, 127.0.0.1:2124:c/)
+          is_expected.to contain_ini_setting('cache_storage_dir')
+          .with_path('/etc/carbon/carbon.conf')
+          .with_section('cache')
+          .with_setting('STORAGE_DIR')
+          .with_value('/srv/carbon')
         }
-        it {
-          is_expected.to contain_carbon__instance('a')
-        }
-        it {
-          is_expected.to contain_carbon__instance('b')
-        }
-        it {
-          is_expected.to contain_carbon__instance('c')
-        }
+
       end
     end
   end

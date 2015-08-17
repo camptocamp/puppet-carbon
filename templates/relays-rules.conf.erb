@@ -1,12 +1,9 @@
 # Managed by puppet
 [default]
 default = true
-<%-
-  instance_list = Array.new
-  @instances.sort.each do |instance|
+destinations = <%=
+  scope.lookupvar('carbon::instances').sort.map do |instance|
     raise(Puppet::ParseError, "#{instance} isn't 1, but is #{instance.length}") unless instance.length == 1
-    port = instance.ord-87
-    instance_list.push "#{carbon_host}:2#{port}4:#{instance}"
-  end
+    "#{scope.lookupvar('carbon::host')}:2#{instance.ord-87}4:#{instance}"
+  end.join(', ')
 -%>
-destinations = <%=instance_list.join(', ')%>

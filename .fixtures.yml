@@ -1,8 +1,6 @@
 fixtures:
   forge_modules:
-    concat:
-      repo: 'puppetlabs-concat'
-      ref: '1.1.2'
+    inifile: 'puppetlabs-inifile'
     stdlib: 'puppetlabs-stdlib'
     systemd: 'camptocamp-systemd'
   symlinks:

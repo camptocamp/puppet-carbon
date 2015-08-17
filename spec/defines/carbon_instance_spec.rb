@@ -26,9 +26,10 @@ describe "carbon::instance" do
         }
 
         it {
-          is_expected.to contain_concat__fragment('carbon instance a')
-          .with_ensure('present')
-          .with_target('/etc/carbon/carbon.conf')
+          is_expected.to contain_ini_setting('cache_a_LINE_RECEIVER_INTERFACE')
+          .with_path('/etc/carbon/carbon.conf')
+          .with_setting('LINE_RECEIVER_INTERFACE')
+          .with_value('127.0.0.1')
         }
 
         it {
