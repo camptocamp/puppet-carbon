@@ -16,9 +16,9 @@ class carbon(
 
   anchor {'carbon::begin': } ->
   class {'::carbon::install': }->
-  class {'::carbon::config': }->
+  class {'::carbon::config': } ~>
   class {'::carbon::service': } ->
-  anchor {'carbon::end:}
+  anchor {'carbon::end':}
 
   create_resources('carbon::instance', $instances)
 
