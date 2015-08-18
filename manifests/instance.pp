@@ -33,6 +33,7 @@ define carbon::instance(
     ensure  => $ensure,
     path    => "${carbon::config_dir}/carbon.conf",
     section => "cache:${name}",
+    notify  => Service["carbon-cache-${name}"],
   }
   $port = inline_template('<%= @name.ord-87 %>')
   ini_setting {
