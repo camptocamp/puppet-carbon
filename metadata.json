@@ -3,7 +3,7 @@
   "version": "0.0.9",
   "author": "Camptocamp",
   "summary": "Manage carbon-cache/relay via systemd",
-  "license": "Camptocamp SA",
+  "license": "Apache-2.0",
   "source": "local",
   "dependencies": [
     {
@@ -25,7 +25,7 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "7"
+        "8"
       ]
     },
     {
