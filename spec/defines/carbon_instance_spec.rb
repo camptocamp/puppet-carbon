@@ -26,20 +26,21 @@ describe "carbon::instance" do
         }
 
         it {
-          is_expected.to contain_ini_setting('cache_a_LINE_RECEIVER_INTERFACE')
-          .with_path('/etc/carbon/carbon.conf')
-          .with_setting('LINE_RECEIVER_INTERFACE')
-          .with_value('127.0.0.1')
+          is_expected.to contain_ini_setting('cache_a_LINE_RECEIVER_INTERFACE').with({
+            :path    => '/etc/carbon/carbon.conf',
+            :setting => 'LINE_RECEIVER_INTERFACE',
+            :value   => '127.0.0.1',
+          })
         }
 
         it {
-          is_expected.to contain_file('/etc/systemd/system/carbon-cache-a.service')
-          .with_ensure('file')
+          is_expected.to contain_file('/etc/systemd/system/carbon-cache-a.service').
+            with_ensure('file')
         }
 
         it {
-          is_expected.to contain_service('carbon-cache-a')
-          .with_ensure('running')
+          is_expected.to contain_service('carbon-cache-a').
+            with_ensure('running')
         }
       end
     end

@@ -37,11 +37,12 @@ describe "carbon" do
         }
 
         it {
-          is_expected.to contain_ini_setting('cache_storage_dir')
-          .with_path('/etc/carbon/carbon.conf')
-          .with_section('cache')
-          .with_setting('STORAGE_DIR')
-          .with_value('/srv/carbon')
+          is_expected.to contain_ini_setting('cache_storage_dir').with({
+            :path    => '/etc/carbon/carbon.conf',
+            :section => 'cache',
+            :setting => 'STORAGE_DIR',
+            :value   => '/srv/carbon',
+          })
         }
 
       end
