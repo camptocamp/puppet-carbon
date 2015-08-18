@@ -16,12 +16,9 @@ RSpec.configure do |c|
     puppet_module_install(:source => module_root, :module_name => module_name)
 
     hosts.each do |host|
-      # Put here only puppetlabs supported modules used in almost every profile
-      on host, puppet('module','install','puppetlabs-concat'), { :acceptable_exit_codes => [0,1] }
+      on host, puppet('module','install','puppetlabs-inifile'), { :acceptable_exit_codes => [0,1] }
       on host, puppet('module','install','puppetlabs-stdlib'), { :acceptable_exit_codes => [0,1] }
-      if fact('osfamily') == 'Debian'
-        on host, puppet('module','install','puppetlabs-apt'), { :acceptable_exit_codes => [0,1] }
-      end
+      on host, puppet('module','install','camptocamp-systemd'), { :acceptable_exit_codes => [0,1] }
     end
   end
 end
