@@ -3,16 +3,13 @@ define carbon::instance(
   $cache_query_interface        = '127.0.0.1',
   $line_receiver_interface      = '127.0.0.1',
   $group                        = '_graphite',
-  $local_data_dir               = '/var/lib/carbon/whisper',
   $log_cache_hits               = 'False',
   $log_updates                  = 'False',
   $max_cache_size               = 'inf',
   $max_creates_per_minute       = 50,
   $max_updates_per_second       = 1000,
   $pickle_receiver_interface    = '127.0.0.1',
-  $storage_dir                  = '/var/lib/carbon',
   $user                         = '_graphite',
-  $whitelists_dir               = '/var/lib/carbon/lists'
 ) {
 
   include ::systemd
@@ -62,13 +59,13 @@ define carbon::instance(
       value   => $user;
     "cache_${name}_STORAGE_DIR":
       setting => 'STORAGE_DIR',
-      value   => $storage_dir;
+      value   => $carbon::storage_dir;
     "cache_${name}_LOCAL_DATA_DIR":
       setting => 'LOCAL_DATA_DIR',
-      value   => $local_data_dir;
+      value   => "${carbon::storage_dir}/whisper";
     "cache_${name}_WHITELISTS_DIR":
       setting => 'WHITELISTS_DIR',
-      value   => $whitelists_dir;
+      value   => "${carbon::storage_dir}/lists";
     "cache_${name}_LOG_UPDATES":
       setting => 'LOG_UPDATES',
       value   => $log_updates;
