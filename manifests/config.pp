@@ -72,15 +72,15 @@ end.join(", ")
   file {'/var/run/carbon':
     ensure => directory,
     group  => $carbon::group,
-    mode   => '755',
+    mode   => '0755',
     owner  => $carbon::user,
   }
 
   file {[
-    "${carbon::storage_dir}",
+    $carbon::storage_dir,
     "${carbon::storage_dir}/whisper",
     "${carbon::storage_dir}/lists",
-    "${carbon::storage_dir}/rrd"
+    "${carbon::storage_dir}/rrd",
   ]:
     ensure  => directory,
     group   => $carbon::group,
