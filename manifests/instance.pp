@@ -47,7 +47,7 @@ define carbon::instance(
       setting => 'CACHE_QUERY_INTERFACE',
       value   => $cache_query_interface;
     "cache_${name}_LINE_RECEIVER_PORT":
-      setting => 'PICKLE_RECEIVER_PORT',
+      setting => 'LINE_RECEIVER_PORT',
       value   => "2${port}3";
     "cache_${name}_PICKLE_RECEIVER_PORT":
       setting => 'PICKLE_RECEIVER_PORT',
