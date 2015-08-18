@@ -6,17 +6,17 @@ Description=Carbon-cache instance <%=@name%>
 Type=simple
 LimitNOFILE=65535
 TimeoutStopSec=20
-ExecStart=/usr/bin/carbon-cache \\
-        --config=/etc/carbon/carbon.conf \\
-        --debug \\
-        --instance=<%=@name%> \\
-        --pidfile=/var/run/carbon/carbon-cache-<%=@name%>.pid \\
+ExecStart=/usr/bin/carbon-cache \
+        --config=/etc/carbon/carbon.conf \
+        --debug \
+        --instance=<%=@name%> \
+        --pidfile=/var/run/carbon/carbon-cache-<%=@name%>.pid \
         --logdir=/var/log/carbon/ start
 ExecStop=/usr/bin/carbon-cache
-        --config=/etc/carbon/carbon.conf \\
-        --debug \\
-        --instance=<%=@name%> \\
-        --pidfile=/var/run/carbon/carbon-cache-<%=@name%>.pid \\
+        --config=/etc/carbon/carbon.conf \
+        --debug \
+        --instance=<%=@name%> \
+        --pidfile=/var/run/carbon/carbon-cache-<%=@name%>.pid \
         --logdir=/var/log/carbon/ stop
 KillMod=mixed
 User=<%=@user%>
