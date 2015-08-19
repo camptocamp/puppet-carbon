@@ -1,0 +1,5 @@
+---
+.travis.yml:
+  acceptance:
+    - 'carbon_mono_instance'
+    - 'carbon'
