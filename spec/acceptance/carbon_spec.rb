@@ -4,6 +4,11 @@ describe 'carbon' do
   context 'with defaults' do
     it 'is_expected.to idempotently run' do
       pp = <<-EOS
+        if $::osfamily == 'RedHat' {
+          class { '::epel':
+            before => Class['carbon'],
+          }
+        }
         class { 'carbon': }
       EOS
 
