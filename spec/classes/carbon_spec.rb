@@ -29,12 +29,28 @@ describe "carbon" do
         }
 
         it {
-          is_expected.to contain_package('graphite-carbon')
+          is_expected.to contain_class('carbon::install')
         }
-
-        it {
-          is_expected.to contain_package('python-rrdtool')
-        }
+        case facts[:osfamily]
+        when 'Debian'
+          it {
+            is_expected.to contain_package('carbon-cache')
+            .with_name('graphite-carbon')
+          }
+          it {
+            is_expected.to contain_package('python-rrd')
+            .with_name('python-rrdtool')
+          }
+        when 'RedHat'
+          it {
+            is_expected.to contain_package('carbon-cache')
+            .with_name('python-carbon')
+          }
+          it {
+            is_expected.to contain_package('python-rrd')
+            .with_name('rrdtool-python')
+          }
+        end
 
         it {
           is_expected.to contain_ini_setting('cache_storage_dir').with({
