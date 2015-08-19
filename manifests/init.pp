@@ -6,7 +6,7 @@ class carbon(
   $instances           = {
     'a' => { user => $carbon::params::user, group => $carbon::params::group},
     'b' => { user => $carbon::params::user, group => $carbon::params::group},
-    'c' => { user => $carbon::params::user, group => $carbon::params::group}
+    'c' => { user => $carbon::params::user, group => $carbon::params::group},
   },
   $mono_instance       = false,
   $python_rrdtools_pkg = $carbon::params::python_rrdtools_pkg,
