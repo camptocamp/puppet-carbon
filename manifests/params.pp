@@ -5,7 +5,7 @@ class carbon::params {
       $python_rrdtools_pkg = 'python-rrdtool'
     }
     'RedHat': {
-      $carbon_cache_pkg = undef
+      $carbon_cache_pkg = 'python-carbon'
       $python_rrdtools_pkg = 'rrdtool-python'
     }
     default: {
