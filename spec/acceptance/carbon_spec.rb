@@ -57,4 +57,32 @@ describe 'carbon' do
       it { is_expected.to be_listening }
     end
   end
+
+  context 'remove an instance' do
+    it 'is_expected.to idempotently run' do
+      pp = <<-EOS
+        class { 'carbon':
+          instances => {
+            a => {},
+            b => {},
+            c => {
+              ensure => absent,
+            }
+          },
+        }
+      EOS
+
+      apply_manifest(pp, :catch_failures => true)
+      apply_manifest(pp, :catch_changes => true)
+    end
+    describe port(2123) do
+      it { is_expected.not_to be_listening }
+    end
+    describe port(2124) do
+      it { is_expected.not_to be_listening }
+    end
+    describe port(7122) do
+      it { is_expected.not_to be_listening }
+    end
+  end
 end
