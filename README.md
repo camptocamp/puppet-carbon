@@ -15,6 +15,9 @@
 Only this class must be used
 
 #### Usage
+
+Default usage with multiple carbon-cache instances:
+
 ```Puppet
 class {'::carbon':
   carbon_host  => '127.0.0.1',
@@ -40,8 +43,14 @@ class {'::carbon':
 }
 ```
 
-It allows to create a multi-instance carbon-cache, launching as many carbon-cache processes as you'd need.
-Please take note the instance name must be "one letter". Hence, maximum seems to be 26.
+Usage for default instance (as installed by distro packages):
+
+```Puppet
+class {'::carbon':
+  mono_instance => true,
+  storage_dir  => '/srv/carbon',
+}
+```
 
 ## Definitions
 
