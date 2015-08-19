@@ -2,11 +2,15 @@ class carbon(
   $carbon_cache_pkg    = $carbon::params::carbon_cache_pkg,
   $config_dir          = '/etc/carbon',
   $host                = '127.0.0.1',
-  $group               = '_graphite',
-  $instances           = {'a'=>{}, 'b'=>{}, 'c'=>{}},
+  $group               = $carbon::params::group,
+  $instances           = {
+    'a' => { user => $carbon::params::user, group => $carbon::params::group},
+    'b' => { user => $carbon::params::user, group => $carbon::params::group},
+    'c' => { user => $carbon::params::user, group => $carbon::params::group}
+  },
   $mono_instance       = false,
   $python_rrdtools_pkg = $carbon::params::python_rrdtools_pkg,
-  $user                = '_graphite',
+  $user                = $carbon::params::user,
   $storage_dir         = '/var/lib/carbon',
 ) inherits carbon::params {
 

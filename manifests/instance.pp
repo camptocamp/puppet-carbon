@@ -2,14 +2,14 @@ define carbon::instance(
   $ensure                       = present,
   $cache_query_interface        = '127.0.0.1',
   $line_receiver_interface      = '127.0.0.1',
-  $group                        = '_graphite',
+  $group                        = $carbon::group,
   $log_cache_hits               = 'False',
   $log_updates                  = 'False',
   $max_cache_size               = 'inf',
   $max_creates_per_minute       = 50,
   $max_updates_per_second       = 1000,
   $pickle_receiver_interface    = '127.0.0.1',
-  $user                         = '_graphite',
+  $user                         = $carbon::user,
 ) {
 
   include ::systemd
