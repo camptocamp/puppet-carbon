@@ -16,9 +16,6 @@ class carbon(
   validate_bool($mono_instance)
   validate_absolute_path($storage_dir)
 
-  if $::osfamily == 'RedHat' and $carbon_cache_pkg == undef {
-    fail "Please provide a value for 'carbon_cache_pkg' on $::osfamily"
-  }
   include ::systemd
 
   anchor {'carbon::begin': } ->
