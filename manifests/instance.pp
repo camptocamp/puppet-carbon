@@ -35,7 +35,7 @@ define carbon::instance(
     section => "cache:${name}",
     notify  => Service["carbon-cache-${name}"],
   }
-  $port = inline_template('<%= @name.ord-87 %>')
+  $port = inline_template('<%= @name.unpack("c")[0]-87 %>')
   ini_setting {
     "cache_${name}_LINE_RECEIVER_INTERFACE":
       setting => 'LINE_RECEIVER_INTERFACE',
