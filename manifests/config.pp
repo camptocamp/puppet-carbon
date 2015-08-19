@@ -85,7 +85,7 @@ end.join(", ")
     ensure  => directory,
     group   => $carbon::group,
     owner   => $carbon::user,
-    require => Package['graphite-carbon'],
+    require => Package['carbon-cache'],
   }
 
   file { "${base_dir}/storage-schemas.conf":
@@ -102,7 +102,7 @@ retentions = 15s:7d,1m:21d,15m:8w
     group   => 'root',
     mode    => '0644',
     owner   => 'root',
-    require => Package['graphite-carbon'],
+    require => Package['carbon-cache'],
   }
 
 
