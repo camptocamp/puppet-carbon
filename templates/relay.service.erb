@@ -18,8 +18,8 @@ ExecStop=/usr/bin/carbon-relay \
         --pidfile=/var/run/carbon/carbon-relay.pid \
         --logdir=/var/log/carbon/ start
 KillMode=mixed
-User=<%=@user%>
-Group=<%=@group%>
+User=<%=scope.lookupvar('carbon::user')%>
+Group=<%=scope.lookupvar('carbon::group')%>
 
 [Install]
 WantedBy=multi-user.target
