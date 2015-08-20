@@ -5,12 +5,12 @@
   "summary": "Manage carbon-cache/relay via systemd",
   "source": "https://github.com/camptocamp/puppet-carbon",
   "project_page": "https://github.com/camptocamp/puppet-carbon",
-  "issues_url": "https://github.com/puppetlabs/puppet-carbon/issues",
+  "issues_url": "https://github.com/camptocamp/puppet-carbon/issues",
   "license": "Apache-2.0",
   "dependencies": [
     {
       "name": "camptocamp/systemd",
-      "version_requirement": ">=0.2.0"
+      "version_requirement": ">=0.2.0 <2.0.0"
     },
     {
       "name": "puppetlabs/stdlib",
@@ -19,12 +19,6 @@
     {
       "name": "puppetlabs/concat",
       "version_requirement": ">= 1.0.0 <2.0.0"
-    }
-  ],
-  "requirements": [
-    {
-      "name": "puppet",
-      "version_requirement": "3.x"
     }
   ],
   "operatingsystem_support": [
@@ -40,8 +34,5 @@
         "7"
       ]
     }
-  ],
-  "puppet_version": [
-    "3.7"
   ]
 }
