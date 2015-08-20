@@ -1,6 +1,6 @@
 {
   "name": "camptocamp-carbon",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Camptocamp",
   "summary": "Manage carbon-cache/relay via systemd",
   "source": "https://github.com/camptocamp/puppet-carbon",
