@@ -33,6 +33,7 @@ define carbon::instance(
     ensure  => $ensure,
     path    => "${carbon::config_dir}/carbon.conf",
     section => "cache:${name}",
+    require => Class['carbon::install'],
     notify  => Service["carbon-cache-${name}"],
   }
   $port = inline_template('<%= @name.unpack("c")[0]-87 %>')
