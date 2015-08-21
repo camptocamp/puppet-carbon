@@ -4,11 +4,6 @@ describe 'carbon class' do
   context 'carbon mono_instance' do
     it 'is_expected.to idempotently run' do
       pp = <<-EOS
-        if $::osfamily == 'RedHat' {
-          class { '::epel':
-            before => Class['carbon'],
-          }
-        }
         class { 'carbon': 
           mono_instance => true,
         }
