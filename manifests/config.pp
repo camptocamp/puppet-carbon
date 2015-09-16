@@ -95,6 +95,10 @@ end.join(", ")
 pattern = ^carbon\.
 retentions = 60:90d
 
+[collectd]
+pattern = ^collectd\.
+retentions = 10s:1d,30s:7d,1m:21d,15m:5y
+
 [default_metrics]
 pattern = .*
 retentions = 15s:7d,1m:21d,15m:8w
