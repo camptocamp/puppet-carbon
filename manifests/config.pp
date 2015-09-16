@@ -1,5 +1,5 @@
 class carbon::config {
-  
+
   $base_dir = $carbon::config_dir
 
   $destinations = inline_template('<%=
@@ -35,17 +35,17 @@ end.join(", ")
       section => 'cache',
       setting => 'WHITELISTS_DIR',
       value   => "${carbon::storage_dir}/lists";
-    'cache_destination':
+    'relay_destination':
       path    => "${base_dir}/carbon.conf",
-      section => 'cache',
+      section => 'relay',
       setting => 'DESTINATIONS',
       value   => $destinations;
-    'aggregator_destination':
+    'relay_receiver_port':
       path    => "${base_dir}/carbon.conf",
-      section => 'aggregator',
-      setting => 'DESTINATIONS',
-      value   => $destinations;
-  }
+      section => 'relay',
+      setting => 'LINE_RECEIVER_PORT',
+      value   => '2003';
+  } ->
 
   file {"${base_dir}/storage-aggregation.conf":
     ensure  => file,
