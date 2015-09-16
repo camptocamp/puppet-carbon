@@ -99,5 +99,6 @@ define carbon::instance(
     hasrestart => false,
     provider   => 'systemd',
     require    => Exec['systemctl-daemon-reload'],
+    subscribe  => Class['::carbon::config'],
   }
 }
