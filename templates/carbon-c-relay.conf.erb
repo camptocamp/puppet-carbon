@@ -1,0 +1,15 @@
+# file managed by puppet
+
+cluster carbon_cluster
+  any_of
+<% scope.lookupvar('carbon::instances').keys.sort.each do |instance|
+     raise(Puppet::ParseError, "#{instance} isn't 1, but is #{instance.length}") unless instance.length == 1 -%>
+    <%= scope.lookupvar('carbon::host') %>:2<%= instance.unpack('c')[0]-87 %>3
+<% end -%>
+  ;
+
+match *
+  send to carbon_cluster
+  stop
+  ;
+

@@ -109,5 +109,14 @@ retentions = 15s:7d,1m:21d,15m:8w
     require => Package['carbon-cache'],
   }
 
+  if ($::carbon::relay == 'carbon-c-relay') {
+    file { '/etc/carbon-c-relay.conf':
+      ensure  => file,
+      content => template('carbon/carbon-c-relay.conf.erb'),
+      group   => 'root',
+      mode    => '0644',
+      owner   => 'root',
+    }
+  }
 
 }

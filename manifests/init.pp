@@ -9,6 +9,7 @@ class carbon(
     'c' => { user => $carbon::params::user, group => $carbon::params::group},
   },
   $mono_instance       = false,
+  $relay               = $carbon::params::carbon_relay,
   $python_rrdtools_pkg = $carbon::params::python_rrdtools_pkg,
   $user                = $carbon::params::user,
   $storage_dir         = '/var/lib/carbon',

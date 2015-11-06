@@ -12,7 +12,7 @@ class carbon::service {
       hasstatus => true,
     }
   }
-  service {'carbon-relay':
+  service {$::carbon::relay:
     ensure   => running,
     enable   => true,
     provider => 'systemd',
