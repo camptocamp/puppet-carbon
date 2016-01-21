@@ -6,6 +6,9 @@ Description=Carbon-cache instance <%=@name%>
 Type=simple
 LimitNOFILE=65535
 TimeoutStopSec=20
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/run/carbon/
+ExecStartPre=/bin/chown <%=@user%>:<%=@group%> /var/run/carbon/
 ExecStart=/usr/bin/carbon-cache \
         --config=/etc/carbon/carbon.conf \
         --debug \

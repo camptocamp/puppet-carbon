@@ -7,6 +7,9 @@ Documentation=https://graphite.readthedocs.org/en/latest/carbon-daemons.html
 Type=simple
 LimitNOFILE=65535
 TimeoutStopSec=20
+PermissionsStartOnly=true
+ExecStartPre=/bin/mkdir -p /var/run/carbon/
+ExecStartPre=/bin/chown <%=scope.lookupvar('carbon::user')%>:<%=scope.lookupvar('carbon::group')%> /var/run/carbon/
 ExecStart=/usr/bin/carbon-relay \
         --config=/etc/carbon/carbon.conf \
         --debug \
