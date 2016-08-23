@@ -3,11 +3,13 @@ class carbon(
   $config_dir          = '/etc/carbon',
   $host                = '127.0.0.1',
   $group               = $carbon::params::group,
+  # lint:ignore:parameter_order
   $instances           = {
     'a' => { user => $carbon::params::user, group => $carbon::params::group},
     'b' => { user => $carbon::params::user, group => $carbon::params::group},
     'c' => { user => $carbon::params::user, group => $carbon::params::group},
   },
+  # lint:endignore
   $mono_instance       = false,
   $relay               = $carbon::params::carbon_relay,
   $python_rrdtools_pkg = $carbon::params::python_rrdtools_pkg,
