@@ -25,11 +25,11 @@ class carbon(
 
   include ::systemd
 
-  anchor {'carbon::begin': } ->
-  class {'::carbon::install': }->
-  class {'::carbon::config': } ~>
-  class {'::carbon::service': } ->
-  anchor {'carbon::end':}
+  anchor {'carbon::begin': }
+  -> class {'::carbon::install': }
+  -> class {'::carbon::config': }
+  ~> class {'::carbon::service': }
+  -> anchor {'carbon::end':}
 
   if !$mono_instance {
     create_resources('carbon::instance', $instances)

@@ -45,31 +45,31 @@ end.join(", ")
       section => 'relay',
       setting => 'LINE_RECEIVER_PORT',
       value   => '2003';
-  } ->
+  }
 
-  file {"${base_dir}/storage-aggregation.conf":
+  -> file {"${base_dir}/storage-aggregation.conf":
     ensure  => file,
     content => '# Emtpy, avoid a warning in logs',
     group   => 'root',
     mode    => '0644',
     owner   => 'root',
-  }->
-  file {"${base_dir}/relay-rules.conf":
+  }
+  -> file {"${base_dir}/relay-rules.conf":
     ensure  => file,
     content => template('carbon/relays-rules.conf.erb'),
     group   => 'root',
     mode    => '0644',
     owner   => 'root',
-  }->
-  file {'/etc/systemd/system/carbon-relay.service':
+  }
+  -> file {'/etc/systemd/system/carbon-relay.service':
     ensure  => file,
     content => template('carbon/relay.service.erb'),
     group   => 'root',
     mode    => '0644',
     owner   => 'root',
     notify  => Exec['systemctl-daemon-reload'],
-  }->
-  file {'/var/run/carbon':
+  }
+  -> file {'/var/run/carbon':
     ensure => directory,
     group  => $carbon::group,
     mode   => '0755',

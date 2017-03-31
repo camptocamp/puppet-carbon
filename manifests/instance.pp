@@ -83,8 +83,8 @@ define carbon::instance(
     "cache_${name}_MAX_CREATES_PER_MINUTE":
       setting => 'MAX_CREATES_PER_MINUTE',
       value   => $max_creates_per_minute;
-  }->
-  file {"/etc/systemd/system/carbon-cache-${name}.service":
+  }
+  -> file {"/etc/systemd/system/carbon-cache-${name}.service":
     ensure  => $f_ensure,
     content => template('carbon/carbon-systemd.erb'),
     group   => 'root',
